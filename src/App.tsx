@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import ToolDetailsPage from './pages/ToolDetailsPage';
+import SubmitToolPage from './pages/SubmitToolPage';
+import { Toaster } from 'react-hot-toast';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Toaster position="top-right" />
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/tool/:id" element={<ToolDetailsPage />} />
+            <Route path="/submit" element={<SubmitToolPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
