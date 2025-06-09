@@ -1,46 +1,151 @@
-# Getting Started with Create React App
+# VibeTools UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React frontend for the VibeTools AI-Tool Directory. Browse, search, submit and review AI tools with star ratings and comments. Built with TypeScript, React Router, React Query, Tailwind CSS, react-hook-form, yup, axios and react-hot-toast.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📋 Table of Contents
 
-### `npm start`
+- [Features](#-features)  
+- [Folder Structure](#-folder-structure)  
+- [Getting Started](#-getting-started)  
+- [Environment Configuration](#-environment-configuration)  
+- [Available Scripts](#-available-scripts)  
+- [Dependencies](#-dependencies)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ✨ Features
 
-### `npm test`
+- **Tool Discovery**: Home page lists tools with search and category filters.  
+- **All-Tools Directory**: View every tool (including hidden) with stats.  
+- **Tool Details**: Dedicated page showing full tool info and reviews.  
+- **Submit Tool**: Add new tools via a validated form with live character count and progress bar.  
+- **Review System**: Star-rating and comment form on the details page.  
+- **Sorting**: Tools sorted by descending average rating.  
+- **Dark Theme**: Tailwind-powered dark UI with blue-gray palette.  
+- **Notifications**: react-hot-toast for success/error feedback.  
+- **Loading & Error States**: Consistent spinners and messages throughout.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Folder Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+vibetools-ui/
+├── node_modules/
+├── public/              # Static assets (index.html, icons)
+└── src/
+    ├── components/
+    │   ├── common/      # ErrorMessage.tsx, LoadingSpinner.tsx, StarRating.tsx
+    │   ├── layout/      # Header.tsx, Footer.tsx, Layout.tsx
+    │   ├── reviews/     # ReviewForm.tsx, ReviewItem.tsx, ReviewList.tsx
+    │   └── tools/       # SearchBar.tsx, ToolCard.tsx, ToolDetails.tsx, ToolForm.tsx, ToolList.tsx
+    │
+    ├── hooks/           # useTools.ts, useToolDetails.ts, useReviews.ts
+    │
+    ├── pages/           # HomePage.tsx, AllToolsPage.tsx, ToolDetailsPage.tsx, SubmitToolPage.tsx
+    │
+    ├── services/
+    │   ├── api.ts       # axios client & endpoints
+    │   └── types.ts     # TypeScript DTOs
+    │
+    ├── utils/           # any utility functions
+    ├── App.tsx          # Router, React Query provider, Toaster
+    ├── App.css          # global styles
+    ├── index.tsx        # ReactDOM entry
+    ├── index.css        # Tailwind imports
+    ├── logo.svg         # logo asset
+    ├── reportWebVitals.ts
+    └── setupTests.ts
+🛠️ Getting Started
+Prerequisites
+Node.js v14+
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone & Install
+bash
+Copy
+Edit
+git clone https://github.com/your-org/vibetools-ui.git
+cd vibetools-ui
+npm install    # or yarn install
+2. Configure the API Base URL
+The frontend reads your backend URL from the REACT_APP_API_URL environment variable and falls back to http://localhost:5051/api.
 
-### `npm run eject`
+Create a file named .env.local in the project root.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Add this line, pointing to your API host:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+env
+Copy
+Edit
+REACT_APP_API_URL=https://your-backend-host.com/api
+Restart the dev server if it’s already running.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Run in Development
+bash
+Copy
+Edit
+npm start    # or yarn start
+Open http://localhost:3000 to view in your browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+📦 Available Scripts
+npm start / yarn start
+Runs the app in development mode with hot-reload.
 
-## Learn More
+npm run build / yarn build
+Builds the app for production into the build/ folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm test / yarn test
+Launches the test runner (Jest + React Testing Library).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm run lint / yarn lint
+Runs ESLint to enforce code quality.
+
+🔗 Environment Configuration
+ts
+Copy
+Edit
+// src/services/api.ts
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL ||
+  'http://localhost:5051/api';
+
+
+🧩 Dependencies
+React & TypeScript
+
+React Router
+
+React Query
+
+axios
+
+Tailwind CSS
+
+react-hook-form + yup
+
+react-hot-toast
+
+Jest + React Testing Library
+
+🤝 Contributing
+Fork the repository
+
+Create a feature branch (git checkout -b feature/XYZ)
+
+Commit your changes (git commit -m "feat: ...")
+
+Push (git push origin feature/XYZ)
+
+Open a Pull Request
+
+Please run npm run lint and add tests for new functionality.
+
+📜 License
+This project is licensed under the MIT License. See LICENSE for details
