@@ -6,7 +6,7 @@ export const useTools = (search?: string, tags?: string[]) => {
   return useQuery({
     queryKey: ['tools', search, tags],
     queryFn: () => toolsApi.getTools(search, tags),
-    select: (response) => response.data.filter((tool: Tool) => !tool.isHidden),
+    select: (response) => response.data as Tool[],
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 };

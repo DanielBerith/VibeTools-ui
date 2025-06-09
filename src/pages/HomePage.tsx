@@ -20,6 +20,9 @@ const HomePage: React.FC = () => {
     
     let filtered = [...tools];
     
+    // First, filter out hidden tools
+    filtered = filtered.filter(tool => !tool.isHidden);
+    
     // Apply search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();

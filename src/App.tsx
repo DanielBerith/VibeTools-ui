@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import ToolDetailsPage from './pages/ToolDetailsPage';
 import SubmitToolPage from './pages/SubmitToolPage';
 import { Toaster } from 'react-hot-toast';
+import AllToolsPage from './pages/AllToolsPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/tool/:id" element={<ToolDetailsPage />} />
             <Route path="/submit" element={<SubmitToolPage />} />
+            <Route path="/tools" element={<AllToolsPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>
